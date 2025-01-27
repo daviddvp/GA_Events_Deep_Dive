@@ -5,6 +5,13 @@ on:
       - opened
       - closed
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'dev-*' # Matches dev-branch, dev-branch-1, dev-branch-2, etc.
+      - 'feat/**' # Matches feat/branch, feat/branch-1, feat/branch-2, etc.
+    paths-ignore:
+      - '.github/wporkflows/*' # Ignore changes to workflows
 jobs:
   deploy:
     runs-on: ubuntu-latest
